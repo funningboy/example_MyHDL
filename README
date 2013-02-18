@@ -1,2 +1,57 @@
-1. setup gdb python
-2. source .bashrc
+
+hi all.
+
+this is my MyHDL example. in this example, you will learn how
+1. to do the bytecode gen, what's the bytecode meaning
+2. how to use the MyHDL to simulate the hardware design
+
+requirements
+    1. setup gdb python
+    http://funningboy.blogspot.tw/2013/02/python-gdb.html
+
+    2. source .bashrc
+    double chek the gdb python path has already export
+
+    3. MyHDL
+    http://www.myhdl.org/doku.php
+
+    4. iverilog
+    mac install
+    sudo port install iverilog
+    http://iverilog.icarus.com/
+
+    5. gtkwave
+    mac install
+    sudo port install cairo +universal -x11
+    sudo port install pango +universal
+    sudo port install gtkwave
+    http://gtkwave.sourceforge.net/
+
+    6. jenkins
+    http://jenkins-ci.org/
+
+in part 1. you can check the "test_asm" folder to findout what's the asm code generated differne between pyObject and pureC,
+try run this script
+% source .bashrc # export gdb python path
+% cd test_asm
+% vim add_c.c # pure_c code
+% vim add_py.c # pyObject code calling pyObject and others pyObject func
+% cd tools
+% python test_asm_run.py
+% ls ../add_c or ls ../add_py # to check the asm bytecode can be genertated or not
+% gdb --python test_asm_dump.py # using gdb python to parse bytecode and dump code size for "add" macro
+you can see the bytecode size in pure_c is smaller than pyObject, it means the pure_c can run faster than pyObject....
+why?
+pre type define in pure_c, no type changed, ...
+
+in part 2. you can check the "test_myhdl" folder
+try run this script
+% python setup.py install # use setuptool to set up python path
+% cd example
+% vim pipe_2x1_alu.py # our pipe 2x1 alu example (merge two add instructions to one instruction) ex: ((a+b)+(c+d))
+% vim serial_1_alu.py # our serial 1 alu example (only one alu)...
+% cd test
+% python test_pipe_2x1_alu.py -v # run unitest pipe_2x1_alu.py
+% gtkwave pipe_2x1_alu.vcd # waveform check
+% iverilog pipe_2x1_alu.v # verilog check
+
