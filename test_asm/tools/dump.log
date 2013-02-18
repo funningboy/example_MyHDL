@@ -1,0 +1,97 @@
+INFO:root:Dump of assembler code for function add:
+10	{
+   0x0000000100000e40 <+0>:	push   %rbp
+   0x0000000100000e41 <+1>:	mov    %rsp,%rbp
+   0x0000000100000e44 <+4>:	mov    %rdi,-0x8(%rbp)
+   0x0000000100000e48 <+8>:	mov    %rsi,-0x10(%rbp)
+
+11	    long c = a+b;
+   0x0000000100000e4c <+12>:	mov    -0x8(%rbp),%rax
+   0x0000000100000e50 <+16>:	mov    -0x10(%rbp),%rcx
+   0x0000000100000e54 <+20>:	add    %rcx,%rax
+   0x0000000100000e57 <+23>:	mov    %rax,-0x28(%rbp)
+
+12	    return c;
+   0x0000000100000e5b <+27>:	mov    -0x28(%rbp),%rax
+   0x0000000100000e5f <+31>:	mov    %rax,-0x20(%rbp)
+   0x0000000100000e63 <+35>:	mov    -0x20(%rbp),%rax
+   0x0000000100000e67 <+39>:	mov    %rax,-0x18(%rbp)
+   0x0000000100000e6b <+43>:	mov    -0x18(%rbp),%rax
+   0x0000000100000e6f <+47>:	pop    %rbp
+   0x0000000100000e70 <+48>:	retq   
+
+End of assembler dump.
+
+INFO:root:purec_dump
+INFO:root:Dump of assembler code for function add:
+11	{
+   0x0000000100000d00 <+0>:	push   %rbp
+   0x0000000100000d01 <+1>:	mov    %rsp,%rbp
+   0x0000000100000d04 <+4>:	sub    $0x40,%rsp
+   0x0000000100000d08 <+8>:	mov    %rdi,-0x8(%rbp)
+   0x0000000100000d0c <+12>:	mov    %rsi,-0x10(%rbp)
+
+12	    long c;
+13	    assert(a!=NULL && "PyObject A=NULL");
+   0x0000000100000d10 <+16>:	mov    -0x8(%rbp),%rax
+   0x0000000100000d14 <+20>:	cmp    $0x0,%rax
+   0x0000000100000d18 <+24>:	sete   %al
+   0x0000000100000d1b <+27>:	and    $0x1,%al
+   0x0000000100000d1d <+29>:	movzbl %al,%eax
+   0x0000000100000d20 <+32>:	cmp    $0x0,%rax
+   0x0000000100000d24 <+36>:	je     0x100000d53 <add+83>
+   0x0000000100000d26 <+38>:	lea    0x1b3(%rip),%rax        # 0x100000ee0 <__func__.6589>
+   0x0000000100000d2d <+45>:	lea    0x1b0(%rip),%rcx        # 0x100000ee4 <__func__.6589+4>
+   0x0000000100000d34 <+52>:	mov    $0xd,%edx
+   0x0000000100000d39 <+57>:	lea    0x1b0(%rip),%rsi        # 0x100000ef0 <__func__.6589+16>
+   0x0000000100000d40 <+64>:	mov    %rax,%rdi
+   0x0000000100000d43 <+67>:	mov    %rsi,-0x30(%rbp)
+   0x0000000100000d47 <+71>:	mov    %rcx,%rsi
+   0x0000000100000d4a <+74>:	mov    -0x30(%rbp),%rcx
+   0x0000000100000d4e <+78>:	callq  0x100000e88
+
+14	    assert(b!=NULL && "PyObject B=NULL");
+   0x0000000100000d53 <+83>:	mov    -0x10(%rbp),%rax
+   0x0000000100000d57 <+87>:	cmp    $0x0,%rax
+   0x0000000100000d5b <+91>:	sete   %al
+   0x0000000100000d5e <+94>:	and    $0x1,%al
+   0x0000000100000d60 <+96>:	movzbl %al,%eax
+   0x0000000100000d63 <+99>:	cmp    $0x0,%rax
+   0x0000000100000d67 <+103>:	je     0x100000d96 <add+150>
+   0x0000000100000d69 <+105>:	lea    0x170(%rip),%rax        # 0x100000ee0 <__func__.6589>
+   0x0000000100000d70 <+112>:	lea    0x16d(%rip),%rcx        # 0x100000ee4 <__func__.6589+4>
+   0x0000000100000d77 <+119>:	mov    $0xe,%edx
+   0x0000000100000d7c <+124>:	lea    0x18a(%rip),%rsi        # 0x100000f0d <__func__.6589+45>
+   0x0000000100000d83 <+131>:	mov    %rax,%rdi
+   0x0000000100000d86 <+134>:	mov    %rsi,-0x38(%rbp)
+   0x0000000100000d8a <+138>:	mov    %rcx,%rsi
+   0x0000000100000d8d <+141>:	mov    -0x38(%rbp),%rcx
+   0x0000000100000d91 <+145>:	callq  0x100000e88
+
+15	    c = PyLong_AsLong(a) + PyLong_AsLong(b);
+   0x0000000100000d96 <+150>:	mov    -0x8(%rbp),%rax
+   0x0000000100000d9a <+154>:	mov    %rax,%rdi
+   0x0000000100000d9d <+157>:	callq  0x100000e7c
+   0x0000000100000da2 <+162>:	mov    -0x10(%rbp),%rcx
+   0x0000000100000da6 <+166>:	mov    %rcx,%rdi
+   0x0000000100000da9 <+169>:	mov    %rax,-0x40(%rbp)
+   0x0000000100000dad <+173>:	callq  0x100000e7c
+   0x0000000100000db2 <+178>:	mov    -0x40(%rbp),%rcx
+   0x0000000100000db6 <+182>:	add    %rax,%rcx
+   0x0000000100000db9 <+185>:	mov    %rcx,-0x28(%rbp)
+
+16	    return PyLong_FromLong(c);
+   0x0000000100000dbd <+189>:	mov    -0x28(%rbp),%rax
+   0x0000000100000dc1 <+193>:	mov    %rax,%rdi
+   0x0000000100000dc4 <+196>:	callq  0x100000e82
+   0x0000000100000dc9 <+201>:	mov    %rax,-0x20(%rbp)
+   0x0000000100000dcd <+205>:	mov    -0x20(%rbp),%rax
+   0x0000000100000dd1 <+209>:	mov    %rax,-0x18(%rbp)
+   0x0000000100000dd5 <+213>:	mov    -0x18(%rbp),%rax
+   0x0000000100000dd9 <+217>:	add    $0x40,%rsp
+   0x0000000100000ddd <+221>:	pop    %rbp
+   0x0000000100000dde <+222>:	retq   
+
+End of assembler dump.
+
+INFO:root:pyobject_dump
